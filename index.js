@@ -12,6 +12,7 @@ const client = new Client({
 });
 
 async function logging(msg, log_level = "info") {
+  console.info(`log_level:${log_level} ${msg}`);
   await client.index({
     index: INDEX,
     body: {

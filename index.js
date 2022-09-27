@@ -13,16 +13,20 @@ const client = new Client({
 
 async function logging(msg, log_level = "info") {
   console.info(`log_level:${log_level} ${msg}`);
-  await client.index({
-    index: INDEX,
-    body: {
-      service_name: SERVICE_NAME,
-      env: ENV,
-      msg: msg,
-      log_level: log_level,
-      date: moment().format("yyyy-MM-DDTHH:mm:ss.000Z"),
-    },
-  });
+  try {
+    await client.index({
+      index: INDEX,
+      body: {
+        service_name: SERVICE_NAME,
+        env: ENV,
+        msg: msg,
+        log_level: log_level,
+        date: moment().format("yyyy-MM-DDTHH:mm:ss.000Z"),
+      },
+    });
+  } catch (error) {
+    console.log(`could not write to elastic error:${JSON.stringify(error)}`);
+  }
 }
 
 module.exports = logging;

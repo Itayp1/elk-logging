@@ -18,7 +18,7 @@ async function logging(msg, log_level = "info") {
     body: {
       service_name: SERVICE_NAME,
       env: ENV,
-      msg: msg + "iiiiiiiiiiiiii",
+      msg: msg,
       log_level: log_level,
       date: moment().format("yyyy-MM-DDTHH:mm:ss"),
     },

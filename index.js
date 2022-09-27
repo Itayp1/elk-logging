@@ -20,7 +20,7 @@ async function logging(msg, log_level = "info") {
       env: ENV,
       msg: msg,
       log_level: log_level,
-      date: moment().format("yyyy-MM-DDTHH:mm:ss"),
+      date: moment().format("yyyy-MM-DDTHH:mm:ss.000Z"),
     },
   });
 }
